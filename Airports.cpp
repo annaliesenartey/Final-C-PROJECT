@@ -56,5 +56,4 @@ void Airports::reader() {
     else {
         cout << "Sorry cannot open";
     }
-
 }
