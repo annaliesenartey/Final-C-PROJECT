@@ -1,5 +1,5 @@
 ////
-//// Created by Annaliese Nartey on 11/26/2022.
+//// Created by Annaliese Nartey and Wndy Pasiah on 11/26/2022.
 ////
 #include <fstream>
 #include <string>
@@ -26,7 +26,7 @@ Airlines::Airlines(int id, string name, string aka, string iata, string icao, st
 void Airlines:: reader() {
 
     ifstream file;
-    file.open("C:/Users/pc/OneDrive - Ashesi University/Second year/2nd Semester/Intermediate CP/c++/airlines.csv");
+    file.open("airlines.csv");
     string line = "";
     int count = 0;
     string key;
@@ -54,7 +54,9 @@ void Airlines:: reader() {
             key = airlineIata;
             Airlines airline = *new Airlines(airline_id, airline_name, alias, airlineIata, airlineIcao, callsign, country, active);
 
-
+            /**this section checks if there is already a key in the map with the same name.
+            * if it does, it adds the new object to the vector belonging to the particular key already in the map
+            */
             if (Airlines::Hmap.find(key) == Airlines::Hmap.end()){
                 vector<Airlines> lists;
                 lists.push_back(airline);
@@ -68,4 +70,5 @@ void Airlines:: reader() {
     else {
         cout << "Sorry cannot open";
     }
+    file.close();
 }

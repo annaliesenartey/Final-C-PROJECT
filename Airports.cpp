@@ -15,7 +15,7 @@ Airports::Airports(std::string airport_id, std::string name, std::string city, s
 
 void Airports::reader() {
     ifstream file;
-    file.open("C:/Users/pc/OneDrive - Ashesi University/Second year/2nd Semester/Intermediate CP/c++/airports.csv");
+    file.open("airports.csv");
     string line = "";
     int count = 0;
     string key;
@@ -39,10 +39,12 @@ void Airports::reader() {
 
 
             key = city + ", "+ country;
-
-
             Airports airport = *new Airports(airport_id,  name, city, country, iata_code, icao_code);
 
+
+            /**this section checks if there is already a key in the map with the same name.
+             * if it does, it adds the new object to the vector belonging to the particular key already in the map
+             */
             if (Airports::Hmap.find(key) == Airports::Hmap.end()){
                 vector<Airports> lists;
                 lists.push_back(airport);
@@ -56,4 +58,5 @@ void Airports::reader() {
     else {
         cout << "Sorry cannot open";
     }
+    file.close();
 }

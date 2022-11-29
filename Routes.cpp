@@ -1,5 +1,5 @@
 ////
-//// Created by Annaliese Nartey on 11/26/2022.
+//// Created by Annaliese Nartey & Wendy Pasiah on 11/26/2022.
 ////
 
 #include "Routes.h"
@@ -18,7 +18,7 @@ Routes::Routes(string airline, string airline_id, string source_airport, string 
 
 void Routes::reader() {
     ifstream file;
-    file.open("C:/Users/pc/OneDrive - Ashesi University/Second year/2nd Semester/Intermediate CP/c++/routes.csv");
+    file.open("routes.csv");
     string line = "";
     int count = 0;
     string key, Akey;
@@ -52,7 +52,9 @@ void Routes::reader() {
             Routes route = *new Routes(airline, airline_id, source_airport,  sourceair_id,  destin,destin_id,  stops);
             Routes::Amap.insert({Akey, route});
 
-
+            /**this section checks if there is already a key in the map with the same name.
+            * if it does, it adds the new object to the vector belonging to the particular key already in the map
+             */
 
             if (Routes::Hmap.find(key) == Routes::Hmap.end()){
                 vector<Routes> lists;
@@ -67,6 +69,6 @@ void Routes::reader() {
     else {
         cout << "Sorry cannot open";
     }
-
+    file.close();
 
 }
