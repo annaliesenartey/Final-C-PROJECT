@@ -14,7 +14,7 @@ using namespace std;
 #endif //UNTITLED2_AIRLINES_H
 
 /**
- * @authors Annaliese Nartey & Wendy Pasiah
+ * @authors Annaliese Nartey & Wendy Pasiah...
  */
 class Airlines {
 private:
